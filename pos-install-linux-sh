@@ -47,16 +47,13 @@ APT_SOFTWARES=(
 
 SNAP_SOFTWARES=(
   spotify
-  slack --classic
   slack-term
-  skype --classic
   gimp
   kdenlive
   discord
   vlc
   whatsdesk
   twinux
-  shotcut --classic
   screencloud
   gnome-twitch
   youtube-dl
@@ -65,12 +62,18 @@ SNAP_SOFTWARES=(
   vectr
   kturtle
   postman
-  sublime-text --classic
-  code --classic
-  android-studio --classic
   umbrello
   wekan
   docker
+)
+
+SNAP_SOFTWARES_CLASSIC=(
+  slack
+  skype
+  shotcut
+  sublime-text
+  code
+  android-studio
 )
 # ---------------------------------------------------------------------- #
 
@@ -131,13 +134,18 @@ flatpak install flathub com.obsproject.Studio -y
 ## Instalando pacotes Snap ##
 
 for nome_do_programa in ${SNAP_SOFTWARES[@]}; do
-    sudo snap install "$nome_do_programa" -y
+    sudo snap install "$nome_do_programa"
+    echo "[INSTALADO] - $nome_do_programa"
+done
+
+for nome_do_programa in ${SNAP_SOFTWARES[@]}; do
+    sudo snap install "$nome_do_programa" --classic
     echo "[INSTALADO] - $nome_do_programa"
 done
 
 ## Instalando outros softwares ##
 
-sudo tar -xvf $DIRETORIO_APPS/$URL_STS
+sudo tar -xvf $DIRETORIO_APPS/*.tar.gz
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
 
