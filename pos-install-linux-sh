@@ -138,7 +138,7 @@ for nome_do_programa in ${SNAP_SOFTWARES[@]}; do
     echo "[INSTALADO] - $nome_do_programa"
 done
 
-for nome_do_programa in ${SNAP_SOFTWARES[@]}; do
+for nome_do_programa in ${SNAP_SOFTWARES_CLASSIC[@]}; do
     sudo snap install "$nome_do_programa" --classic
     echo "[INSTALADO] - $nome_do_programa"
 done
